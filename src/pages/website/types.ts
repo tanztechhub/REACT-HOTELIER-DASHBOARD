@@ -19,6 +19,7 @@ export type Website = {
   seoDescription: string | null
   ogImageUrl: string | null
   analyticsId: string | null
+  displayAddress: string | null
   whatsappNumber: string | null
   mapEmbedUrl: string | null
   latitude: string | null

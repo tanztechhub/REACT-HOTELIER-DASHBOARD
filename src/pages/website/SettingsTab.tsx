@@ -16,7 +16,7 @@ type Draft = Omit<Website, 'id' | 'tenantId' | 'status' | 'publishedAt'>
 const EMPTY: Draft = {
   themeKey: 'aurora', primaryColor: null, accentColor: null, fontFamily: null, logoUrl: null, faviconUrl: null,
   siteTitle: null, tagline: null, seoTitle: null, seoDescription: null, ogImageUrl: null, analyticsId: null,
-  whatsappNumber: null, mapEmbedUrl: null, latitude: null, longitude: null, socialLinks: {},
+  displayAddress: null, whatsappNumber: null, mapEmbedUrl: null, latitude: null, longitude: null, socialLinks: {},
   featureRoomBooking: false, featureMenu: false, featureAppointments: false, featureMemberships: false, featureInquiries: true,
   bookingConfirmation: 'MANUAL', requirePayment: false, depositPercent: '100', depositMinimum: '0', holdMinutes: 30, bookingLocationId: null,
   redirects: [],
@@ -128,6 +128,9 @@ export function SettingsTab({ tenantId, overview, onSaved }: { tenantId: string;
       <Panel title="Contact & location">
         <Notice kind="info">Phone, email and address come from the tenant's business profile — edit them on the tenant page.</Notice>
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
+          <Field label="Address as shown on the website" hint="One line used everywhere — header, footer, contact page. Blank = built from the business profile" className="sm:col-span-2">
+            <TextInput value={draft.displayAddress} placeholder="Karatina | Nyeri - Nairobi Highway" onChange={(v) => set('displayAddress', v || null)} />
+          </Field>
           <Field label="WhatsApp number" hint="Shows a floating chat button">
             <TextInput value={draft.whatsappNumber} placeholder="+254 7…" onChange={(v) => set('whatsappNumber', v)} />
           </Field>
